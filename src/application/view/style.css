@@ -1,0 +1,5 @@
+#index_css,#inscription_css,#menu_jeu_PJS4_CSS,#mdp_oublie_css{
+	-fx-background-image:url("../../images/che_guevarra.png") ;
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: stretch ;
+}

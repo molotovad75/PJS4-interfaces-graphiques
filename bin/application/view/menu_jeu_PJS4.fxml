@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="menu_jeu_PJS4_CSS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="83.0" layoutY="145.0" mnemonicParsing="false" text="Facile" />
+      <Text fill="WHITE" layoutX="83.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez un mode de jeu">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Text>
+      <Button layoutX="201.0" layoutY="145.0" mnemonicParsing="false" text="Moyen" />
+      <Button layoutX="313.0" layoutY="145.0" mnemonicParsing="false" text="Difficile" />
+      <Button layoutX="419.0" layoutY="145.0" mnemonicParsing="false" text="Hardcore" />
+      <Button fx:id="retour_index" layoutX="517.0" layoutY="355.0" mnemonicParsing="false" onAction="#retour_acceuil" text="Retour" />
+   </children>
+</Pane>
