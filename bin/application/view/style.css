@@ -3,3 +3,7 @@
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: stretch ;
 }
+
+#ici_pas_compte,#ici_oubli_mdp{
+	-fx-color:white;
+}
