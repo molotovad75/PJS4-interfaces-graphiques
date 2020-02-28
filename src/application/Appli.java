@@ -1,7 +1,6 @@
 package application;
 
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,9 +14,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Appli extends Application {
-	protected Pane mainLayout;
-	protected Stage primaryStage=new Stage(),stage_menu_jeu=new Stage();
 	
+	//ACCUEIL CONTROLLER
+	protected Pane mainLayout;
+	protected Stage primaryStage=new Stage(),stage_menu_jeu;
+	private Stage stage=new Stage();
 	@FXML
 	private Button se_connecter,jouer_sans_co;
 	@FXML
@@ -27,33 +28,8 @@ public class Appli extends Application {
 
 	protected Scene scene;
 	
-	@FXML //
-	private void ouvir_menu_jeu(ActionEvent e) throws IOException {
-		Stage stage=new Stage();
-		//stage_menu_jeu=stage;
-		stage.setTitle("Menu - Miesto");
-		FXMLLoader  loader=new FXMLLoader();
-		loader.setLocation(Appli.class.getResource("view/menu_jeu_PJS4.fxml"));
-		loader.setController(new Menu_jeu_Controller());
-		this.mainLayout=loader.load();
-		Scene scene=new Scene(this.mainLayout,645,450);
-		stage.setScene(scene);
-		stage.setMaxHeight(scene.getHeight());
-		stage.setMaxWidth(scene.getWidth());
-		stage.setMinHeight(scene.getHeight());
-		stage.setMinWidth(scene.getWidth());
-		
-		stage.show();
-		this.stage_menu_jeu=stage;
-		this.primaryStage.close();
-	}
-	
-	@FXML 
-	private void verif_co_bdd() throws IOException {
-		
-	}
-	
 	/*pour le bouton se connecter et jouer sans se connecter 
+	 * Pour que ça change de couleur.
 	fx:id se_connecter et jouer_sans_co*/ 
 	@FXML 
 	private void entree_souris_bouton() {
@@ -73,42 +49,75 @@ public class Appli extends Application {
 	}
 	
 	
+	
+	@FXML //fx:id jouer_sans_co. 
+	/*Méthode qui servira pour le bouton 
+	 * qui a pour fx:id se_connecter
+	 * sous réserve d'avoir vérifier dans la base de données que
+	 * le login et le mot de passe sont corrects.
+	 * */
+	private void ouvir_menu_jeu(ActionEvent e) throws IOException {
+		stage.setTitle("Menu - Miesto");
+		FXMLLoader  loader=new FXMLLoader();
+		loader.setLocation(Appli.class.getResource("view/menu_jeu_PJS4.fxml"));
+		loader.setController(this);
+		this.mainLayout=loader.load();
+		scene_fenètre_normale();
+		this.primaryStage.close();
+		this.stage_menu_jeu=stage;
+	}
+	
 	@FXML //fx:id lien_inscription
 	private void ouvrir_inscription(ActionEvent e) throws IOException {
-		Stage stage=new Stage();
 		stage.setTitle("Inscription - Miesto");
 		FXMLLoader  loader=new FXMLLoader();
 		loader.setLocation(Appli.class.getResource("view/inscription.fxml"));
-		loader.setController(new InscriptionController());
+		loader.setController(this);
 		this.mainLayout=loader.load();
-		Scene scene=new Scene(this.mainLayout,645,450);
-		stage.setScene(scene);
-		stage.setMaxHeight(scene.getHeight());
-		stage.setMaxWidth(scene.getWidth());
-		stage.setMinHeight(scene.getHeight());
-		stage.setMinWidth(scene.getWidth());
-		stage.show();
+		scene_fenètre_normale();
 		this.primaryStage.close();
 	}
 	@FXML //fx:id Mdp_oublié
 	private void ouvrir_form_mdp_oubli(ActionEvent e) throws IOException {
-		Stage stage=new Stage();
 		stage.setTitle("Mot de passe oublié - Miesto");
 		FXMLLoader  loader=new FXMLLoader();
 		loader.setLocation(Appli.class.getResource("view/formulaire_mdp_oublié.fxml"));
-		loader.setController(new InscriptionController());
+		loader.setController(this);
 		this.mainLayout=loader.load();
-		Scene scene=new Scene(this.mainLayout,645,450);
-		stage.setScene(scene);
-		stage.setMaxHeight(scene.getHeight());
-		stage.setMaxWidth(scene.getWidth());
-		stage.setMinHeight(scene.getHeight());
-		stage.setMinWidth(scene.getWidth());
-		stage.show();
+		scene_fenètre_normale();
 		this.primaryStage.close();
 	}
 	
 
+	@FXML 
+	private void verif_co_bdd() throws IOException {
+		
+	}
+	
+	//MENU JEU CONTROLLER
+	@FXML
+	private Button retour_index;
+	
+	@FXML
+	private void retour_acceuil() throws Exception {
+		start(primaryStage);
+		this.stage_menu_jeu.close();
+	}
+	
+	
+	
+	
+	
+	//INSCRIPTION CONTROLLER
+	
+	
+	
+	
+	//NE PAS TOUCHER AU METHODES SUIVANTES!!
+	public static void main(String[] args) {
+		launch(args);
+	}
+	//Méthode pour démarrer l'application
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage=primaryStage;
@@ -125,13 +134,16 @@ public class Appli extends Application {
 		primaryStage.setMinWidth(scene.getWidth());
 		this.scene=scene;
 		primaryStage.show();
+	}
 		
-
+	public void scene_fenètre_normale() {
+		Scene scene=new Scene(this.mainLayout,645,450);
+		stage.setScene(scene);
+		stage.setMaxHeight(scene.getHeight());
+		stage.setMaxWidth(scene.getWidth());
+		stage.setMinHeight(scene.getHeight());
+		stage.setMinWidth(scene.getWidth());
+		stage.show();
 	}
-	
-	public static void main(String[] args) {
-		Appli.launch(Appli.class,args);
-	}
-	
 		
 }
