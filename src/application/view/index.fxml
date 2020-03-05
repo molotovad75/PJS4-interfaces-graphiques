@@ -21,5 +21,6 @@
       <Hyperlink id="ici_pas_compte" fx:id="lien_inscription" layoutX="412.0" layoutY="205.0" onAction="#ouvrir_inscription" stylesheets="@style.css" text="ici" />
       <Hyperlink id="ici_oubli_mdp" fx:id="Mdp_oublié" layoutX="412.0" layoutY="243.0" onAction="#ouvrir_form_mdp_oubli" stylesheets="@style.css" text="ici" />
       <Text fill="WHITE" layoutX="102.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si vous avez oublié votre mot de passe cliquez" />
+      <Label fx:id="labelEtat" layoutX="270.0" layoutY="318.0" text="Etat:" textFill="WHITE" />
    </children>
 </Pane>

@@ -1,6 +1,12 @@
 package application;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import application.SGBD.BDD_connexion;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -15,7 +22,7 @@ import javafx.stage.Stage;
 
 public class Appli extends Application {
 	
-	//ACCUEIL CONTROLLER
+	//ACCUEIL CONTROLLER AUSSI POUR LA CONNECTION
 	protected Pane mainLayout;
 	protected Stage primaryStage=new Stage(),stage_menu_jeu;
 	private Stage stage=new Stage();
@@ -25,7 +32,10 @@ public class Appli extends Application {
 	private TextField pseudo,Mot_de_passe;
 	@FXML
 	private Hyperlink Mdp_oublié,lien_inscription;
-
+	
+	@FXML
+	private Label labelEtat;
+	
 	protected Scene scene;
 	
 	/*pour le bouton se connecter et jouer sans se connecter 
@@ -90,9 +100,29 @@ public class Appli extends Application {
 	
 
 	@FXML 
-	private void verif_co_bdd() throws IOException {
-		
-	}
+	private void verif_co_bdd() throws SQLException {
+		Connection con=BDD_connexion.connect();
+		PreparedStatement stat=null;
+		ResultSet rs=null;
+		String SQL="SELECT j.nom_utilisateur,j.mdp_joueur FROM joueur AS j WHERE j.nom_joueur=? AND j.mdp_joueur=?";
+		try {
+			stat=con.prepareStatement(SQL);
+			stat.setString(1, pseudo.getText().toString());
+			stat.setString(2, Mot_de_passe.getText().toString());
+			rs=stat.executeQuery();
+			if (rs.next()) {
+				labelEtat.setText("Connecté");
+			}else
+			{
+				labelEtat.setText("Non connecté");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+	} 
+	
+	
 	
 	//MENU JEU CONTROLLER
 	@FXML
@@ -109,6 +139,18 @@ public class Appli extends Application {
 	
 	
 	//INSCRIPTION CONTROLLER
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
