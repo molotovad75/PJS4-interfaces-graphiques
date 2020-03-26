@@ -17,7 +17,7 @@ public class Appli extends Application {
 	//Méthode pour démarrer l'application
 		@Override
 		public void start(Stage primaryStage) throws Exception {
-			Accueil_Controller.primaryStage=primaryStage;
+			
 			primaryStage.setTitle("Connexion - Miesto");
 			FXMLLoader  loader=new FXMLLoader();
 			loader.setLocation(Appli.class.getResource("view/index.fxml"));
@@ -29,9 +29,7 @@ public class Appli extends Application {
 			primaryStage.setMaxWidth(scene.getWidth());
 			primaryStage.setMinHeight(scene.getHeight());
 			primaryStage.setMinWidth(scene.getWidth());
-			primaryStage.show();
+			Accueil_Controller.primaryStage=primaryStage;
+			primaryStage.show(); //On affcihe la fenètre.
 		}
-		
-
-		
 }

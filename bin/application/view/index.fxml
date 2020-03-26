@@ -12,17 +12,33 @@
    <children>
       <TextField fx:id="pseudo" layoutX="203.0" layoutY="93.0" promptText="Pseudo" />
       <TextField fx:id="Mot_de_passe" layoutX="203.0" layoutY="145.0" promptText="Mot de passe" />
-      <Button fx:id="se_connecter" layoutX="473.0" layoutY="360.0" mnemonicParsing="false" text="Se connecter" />
-      <Button fx:id="jouer_sans_co" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" text="Jouer sans se connecter" />
+      <Button id="se_connecter_btn" fx:id="se_connecter" layoutX="473.0" layoutY="360.0" mnemonicParsing="false" stylesheets="@style.css" text="Se connecter" />
+      <Button id="jouer_sans_co_btn" fx:id="jouer_sans_co" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" stylesheets="@style.css" text="Jouer sans se connecter" />
       <Text fill="WHITE" layoutX="130.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue sur Miesto">
          <font>
             <Font size="35.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="163.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si vous n'avez pas de compte cliquez " />
-      <Hyperlink id="ici_pas_compte" fx:id="lien_inscription" layoutX="411.0" layoutY="204.0" prefHeight="17.0" prefWidth="19.0" stylesheets="@style.css" text="ici" />
-      <Hyperlink id="ici_oubli_mdp" fx:id="Mdp_oublié" layoutX="408.0" layoutY="243.0" stylesheets="@style.css" text="ici" />
-      <Text fill="WHITE" layoutX="102.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si vous avez oublié votre mot de passe cliquez" />
-      <Label fx:id="labelEtat" layoutX="270.0" layoutY="318.0" text="Etat:" textFill="WHITE" />
+      <Text fill="WHITE" layoutX="113.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si vous n'avez pas de compte cliquez ">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
+      <Hyperlink id="ici_oubli_mdp" fx:id="Mdp_oublié" layoutX="409.0" layoutY="239.0" stylesheets="@style.css" text="ici">
+         <font>
+            <Font size="18.0" />
+         </font></Hyperlink>
+      <Text fill="WHITE" layoutX="39.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si vous avez oublié votre mot de passe cliquez">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
+      <Label fx:id="labelEtat" layoutX="270.0" layoutY="318.0" text="Etat:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Hyperlink id="hypertexte_pas_compte" fx:id="lien_inscription" layoutX="412.0" layoutY="205.0" stylesheets="@style.css" text="ici">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Hyperlink>
    </children>
 </Pane>

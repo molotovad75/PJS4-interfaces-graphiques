@@ -45,17 +45,18 @@ public class Accueil_Controller {
 	@FXML 
 	private void entree_souris_bouton() {
 		this.se_connecter.setTextFill(Color.DARKORANGE);	
+		
 	}
 	@FXML 
 	private void sortie_souris_bouton() {
 		this.se_connecter.setTextFill(Color.BLACK);	
 	}
 	@FXML
-	private void entree_souris_bouton_jsc() {
+	private void entree_souris_bouton_jsc() { //jouer sans se connecter
 		this.jouer_sans_co.setTextFill(Color.DARKORANGE);
 	}
 	@FXML
-	private void sortie_souris_bouton_jsc() {
+	private void sortie_souris_bouton_jsc() { //jouer sans se connecter
 		this.jouer_sans_co.setTextFill(Color.BLACK);
 	}
 	
@@ -93,6 +94,7 @@ public class Accueil_Controller {
 	 * le login et le mot de passe sont corrects.
 	 * */
 	private void ouvir_menu_jeu(ActionEvent e) throws IOException {
+		
 		stage.setTitle("Menu - Miesto");
 		FXMLLoader  loader=new FXMLLoader();
 		loader.setLocation(Appli.class.getResource("view/menu_jeu_PJS4.fxml"));
