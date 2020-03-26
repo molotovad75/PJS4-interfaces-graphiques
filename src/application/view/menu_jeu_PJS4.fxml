@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="menu_jeu_PJS4_CSS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="menu_jeu_PJS4_CSS" fx:id="stage_menu_jeu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu_jeu_Controller">
    <children>
       <Button layoutX="83.0" layoutY="145.0" mnemonicParsing="false" text="Facile" />
       <Text fill="WHITE" layoutX="83.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez un mode de jeu">
