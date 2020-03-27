@@ -98,7 +98,7 @@ public class Accueil_Controller {
 		stage.setTitle("Menu - Miesto");
 		FXMLLoader  loader=new FXMLLoader();
 		loader.setLocation(Appli.class.getResource("view/menu_jeu_PJS4.fxml"));
-		loader.setController(Menu_jeu_Controller.class);
+		//loader.setController(Menu_jeu_Controller.class);
 		mainLayout=loader.load();
 		scene_fenètre_normale();
 		primaryStage.close();

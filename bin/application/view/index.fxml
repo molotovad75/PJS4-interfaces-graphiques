@@ -8,12 +8,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane id="index_css" fx:id="panner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="593.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="index_css" fx:id="panner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="593.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controle.Accueil_Controller">
    <children>
       <TextField fx:id="pseudo" layoutX="203.0" layoutY="93.0" promptText="Pseudo" />
       <TextField fx:id="Mot_de_passe" layoutX="203.0" layoutY="145.0" promptText="Mot de passe" />
       <Button id="se_connecter_btn" fx:id="se_connecter" layoutX="473.0" layoutY="360.0" mnemonicParsing="false" stylesheets="@style.css" text="Se connecter" />
-      <Button id="jouer_sans_co_btn" fx:id="jouer_sans_co" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" stylesheets="@style.css" text="Jouer sans se connecter" />
+      <Button id="jouer_sans_co_btn" fx:id="jouer_sans_co" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#ouvir_menu_jeu" stylesheets="@style.css" text="Jouer sans se connecter" />
       <Text fill="WHITE" layoutX="130.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue sur Miesto">
          <font>
             <Font size="35.0" />
@@ -23,7 +23,7 @@
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Hyperlink id="ici_oubli_mdp" fx:id="Mdp_oublié" layoutX="409.0" layoutY="239.0" stylesheets="@style.css" text="ici">
+      <Hyperlink id="ici_oubli_mdp" fx:id="Mdp_oublié" layoutX="409.0" layoutY="239.0" onAction="#ouvrir_form_mdp_oubli" stylesheets="@style.css" text="ici">
          <font>
             <Font size="18.0" />
          </font></Hyperlink>
@@ -35,7 +35,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Hyperlink id="hypertexte_pas_compte" fx:id="lien_inscription" layoutX="412.0" layoutY="205.0" stylesheets="@style.css" text="ici">
+      <Hyperlink id="hypertexte_pas_compte" fx:id="lien_inscription" layoutX="412.0" layoutY="205.0" onAction="#ouvrir_inscription" stylesheets="@style.css" text="ici">
          <font>
             <Font size="18.0" />
          </font>
