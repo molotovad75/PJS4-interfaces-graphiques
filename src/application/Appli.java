@@ -21,7 +21,6 @@ public class Appli extends Application {
 			primaryStage.setTitle("Connexion - Miesto");
 			FXMLLoader  loader=new FXMLLoader();
 			loader.setLocation(Appli.class.getResource("view/index.fxml"));
-			//loader.setController(application.controle.Accueil_Controller.class);
 			application.controle.Accueil_Controller.mainLayout=loader.load();
 			Scene scene=new Scene(application.controle.Accueil_Controller.mainLayout,645,450);
 			primaryStage.setScene(scene);

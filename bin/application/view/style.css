@@ -6,11 +6,11 @@
 
 
 
-#se_connecter_btn:hover, #jouer_sans_co_btn:hover{
+#se_connecter_btn:hover, #jouer_sans_co_btn:hover,#btn_retour:hover{
 	-fx-background-color: rgba(43,255,181,50);
 	-fx-text-fill: blue;
-	
 }
+
 #se_connecter_btn, #jouer_sans_co_btn{
 	-fx-font-family: Colombia;
 }

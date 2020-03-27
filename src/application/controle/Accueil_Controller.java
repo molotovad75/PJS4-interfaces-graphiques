@@ -32,7 +32,7 @@ public class Accueil_Controller {
 	
 	
 	public static Pane mainLayout;
-	public static Stage primaryStage=new Stage(),stage_menu_jeu;
+	public static Stage primaryStage=new Stage(),stage_menu_jeu,stage_inscription,stage_mdp_oublié;
 	private static Stage stage=new Stage();
 	
 	protected Scene scene;
@@ -98,7 +98,6 @@ public class Accueil_Controller {
 		stage.setTitle("Menu - Miesto");
 		FXMLLoader  loader=new FXMLLoader();
 		loader.setLocation(Appli.class.getResource("view/menu_jeu_PJS4.fxml"));
-		//loader.setController(Menu_jeu_Controller.class);
 		mainLayout=loader.load();
 		scene_fenètre_normale();
 		primaryStage.close();
@@ -110,20 +109,21 @@ public class Accueil_Controller {
 		stage.setTitle("Inscription - Miesto");
 		FXMLLoader  loader=new FXMLLoader();
 		loader.setLocation(Appli.class.getResource("view/inscription.fxml"));
-		loader.setController(Inscription_Controller.class);
 		mainLayout=loader.load();
 		scene_fenètre_normale();
 		primaryStage.close();
+		stage_inscription=stage;
+		
 	}
 	@FXML //fx:id Mdp_oublié
 	private void ouvrir_form_mdp_oubli(ActionEvent e) throws IOException {
 		stage.setTitle("Mot de passe oublié - Miesto");
 		FXMLLoader  loader=new FXMLLoader();
 		loader.setLocation(Appli.class.getResource("view/formulaire_mdp_oublié.fxml"));
-		loader.setController(Mdp_oublié_Controller.class);
 		mainLayout=loader.load();
 		scene_fenètre_normale();
 		primaryStage.close();
+		stage_mdp_oublié=stage;
 	}
 	
 	public static void scene_fenètre_normale() {

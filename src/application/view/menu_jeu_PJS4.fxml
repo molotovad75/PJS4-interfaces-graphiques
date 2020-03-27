@@ -16,6 +16,6 @@
       <Button layoutX="201.0" layoutY="145.0" mnemonicParsing="false" text="Moyen" />
       <Button layoutX="313.0" layoutY="145.0" mnemonicParsing="false" text="Difficile" />
       <Button layoutX="419.0" layoutY="145.0" mnemonicParsing="false" text="Hardcore" />
-      <Button fx:id="retour_index" layoutX="517.0" layoutY="355.0" mnemonicParsing="false" onAction="#retour_acceuil" text="Retour" />
+      <Button id="btn_retour" fx:id="retour_index" layoutX="517.0" layoutY="355.0" mnemonicParsing="false" onAction="#retour_acceuil" stylesheets="@style.css" text="Retour" />
    </children>
 </Pane>

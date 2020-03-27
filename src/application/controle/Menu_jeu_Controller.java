@@ -12,7 +12,8 @@ public class Menu_jeu_Controller {
 	
 	@FXML
 	private void retour_acceuil() throws Exception {
-		
+		Accueil_Controller.stage_menu_jeu.close();
+		Accueil_Controller.primaryStage.show();
 	}
 	
 	
