@@ -1,8 +1,6 @@
 package application.controle;
 
-import java.sql.SQLException;
-
-import application.SGBD.BDD_utilisation;
+import application.SGBD.DAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -35,15 +33,9 @@ public class Inscription_Controller {
 	
 	@FXML
 	private void inscription() {
-		String requeteSQL="INSERT INTO joueur(nom_utilisateur,nom_joueur,mail_joueur,code_confirmation,date_confirmation,mdp_joueur,temps_jeu) "
-				+ "VALUES('"+username+"','"+pseudo+"','"+mail+"','',NOW(),'"+mdp1+"','');";
-		try {
-			BDD_utilisation.connect_other_query(requeteSQL);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		String sql = "INSERT INTO joueur(id_joueur,nom_utilisateur, nom_joueur, mail_joueur, code_confirmation, date_confirmation, mdp_joueur, temps_jeu) " + 
+                "VALUES('null', 'username', 'pseudo', 'mail', 'NOW(), 'mdp1', '')";
+		DAO.insérer_data(sql);
 		
 	}
 	
