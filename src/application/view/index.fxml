@@ -23,7 +23,7 @@
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Hyperlink id="ici_oubli_mdp" fx:id="Mdp_oublié" layoutX="409.0" layoutY="239.0" onAction="#ouvrir_form_mdp_oubli" stylesheets="@style.css" text="ici">
+      <Hyperlink id="ici_oubli_mdp" fx:id="Mdp_oublié" layoutX="412.0" layoutY="239.0" onAction="#ouvrir_form_mdp_oubli" stylesheets="@style.css" text="ici">
          <font>
             <Font size="18.0" />
          </font></Hyperlink>
@@ -41,6 +41,6 @@
          </font>
       </Hyperlink>
       <PasswordField fx:id="Mot_de_passe" layoutX="203.0" layoutY="143.0" promptText="Mot de passe" />
-      <Button fx:id="btn_socre" layoutX="272.0" layoutY="360.0" mnemonicParsing="false" text="Scores" />
+      <Button fx:id="btn_socre" layoutX="272.0" layoutY="360.0" mnemonicParsing="false" onAction="#ouvrir_score" text="Scores" />
    </children>
 </Pane>

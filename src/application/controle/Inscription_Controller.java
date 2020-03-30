@@ -2,6 +2,7 @@ package application.controle;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 import application.SGBD.BDD_utilisation;
 import javafx.fxml.FXML;
@@ -29,7 +30,19 @@ public class Inscription_Controller {
 	private TextField mdp2;	
 	
 	
+	public final static Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+	           "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+	           "\\@" +
+	           "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+	           "(" +
+	           "\\." +
+	           "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+	           ")+"
+	);
 	
+	public static boolean isValiEmail(String email){
+	    return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
+	}
 	@FXML
 	private void retour_acceuil() throws Exception {
 		Accueil_Controller.stage_inscription.close();
@@ -40,6 +53,7 @@ public class Inscription_Controller {
 	private void inscription() { //L'inscription fonctionne
 		String requeteSQL="INSERT INTO joueur(nom_utilisateur,nom_joueur,mail_joueur,code_confirmation,date_confirmation,mdp_joueur,temps_jeu) "
 				+ "VALUES(?,?,?,'123',CURDATE(),?,TIMESTAMP(\"2018-09-15\"))";
+		
 		try {
 			BDD_utilisation.load_database();
 			PreparedStatement preparedStatement=BDD_utilisation.getConn().prepareStatement(requeteSQL);
@@ -47,21 +61,41 @@ public class Inscription_Controller {
 			preparedStatement.setString(2, pseudo.getText());
 			preparedStatement.setString(3, mail.getText());
 			preparedStatement.setString(4, mdp1.getText());
-			preparedStatement.executeUpdate();
+			if (mdp1.getText().equals(mdp2.getText())==true && isValiEmail(this.mail.getText())==true ) {
+				preparedStatement.executeUpdate();
+				Alert alert_principale=new Alert(AlertType.INFORMATION);
+				alert_principale.setTitle("Information");
+				alert_principale.setHeaderText("");
+				alert_principale.setContentText("Votre inscription a bien été prise en compte !");
+				alert_principale.showAndWait();
+				this.username.setText("");
+				this.pseudo.setText("");
+				this.mail.setText("");
+				this.mdp1.setText("");
+				this.mdp2.setText("");
+			}else if(mdp1.getText().equals(mdp2.getText())==false) {
+				Alert alert=new Alert(AlertType.INFORMATION);
+				alert.setTitle("Information");
+				alert.setHeaderText("");
+				alert.setContentText("Les 2 mots de passe ne coincident pas");
+				alert.showAndWait();
+				this.mdp1.setText("");
+				this.mdp2.setText("");
+				
+			}else if (isValiEmail(this.mail.getText())==false) {
+				Alert alert=new Alert(AlertType.INFORMATION);
+				alert.setTitle("Information");
+				alert.setHeaderText("");
+				alert.setContentText("L'adresse électronique est invalide");
+				alert.showAndWait();
+				this.mail.setText("");
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Alert alert=new Alert(AlertType.INFORMATION);
-		alert.setTitle("Information");
-		alert.setHeaderText("");
-		alert.setContentText("Votre inscription a bien été prise en compte !");
-		alert.showAndWait();
-		this.username.setText("");
-		this.pseudo.setText("");
-		this.mail.setText("");
-		this.mdp1.setText("");
-		this.mdp2.setText("");
+		
 	}
 	
 	public TextField getUsername() {

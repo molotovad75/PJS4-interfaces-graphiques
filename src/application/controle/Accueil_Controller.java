@@ -19,8 +19,6 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 public class Accueil_Controller {
@@ -39,29 +37,7 @@ public class Accueil_Controller {
 	private static Stage stage=new Stage();
 	
 	protected Scene scene;
-	
 
-
-//	/*pour le bouton se connecter et jouer sans se connecter 
-//	 * Pour que ça change de couleur.
-//	fx:id se_connecter et jouer_sans_co*/ 
-//	@FXML 
-//	private void entree_souris_bouton() {
-//		this.se_connecter.setTextFill(Color.DARKORANGE);	
-//		
-//	}
-//	@FXML 
-//	private void sortie_souris_bouton() {
-//		this.se_connecter.setTextFill(Color.BLACK);	
-//	}
-//	@FXML
-//	private void entree_souris_bouton_jsc() { //jouer sans se connecter
-//		this.jouer_sans_co.setTextFill(Color.DARKORANGE);
-//	}
-//	@FXML
-//	private void sortie_souris_bouton_jsc() { //jouer sans se connecter
-//		this.jouer_sans_co.setTextFill(Color.BLACK);
-//	}
 	
 	@FXML 
 	private Joueur verif_co_bdd() throws SQLException {
@@ -134,7 +110,7 @@ public class Accueil_Controller {
 	@FXML //fx:id Mdp_oublié
 	private void ouvrir_form_mdp_oubli(ActionEvent e) throws IOException {
 		 try {
-			Desktop.getDesktop().browse(new URL("https://osu.ppy.sh/home").toURI());
+			Desktop.getDesktop().browse(new URL("https://osu.ppy.sh/home").toURI()); //Il faudra changer l'URL pour le site de notre projet.
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
@@ -143,6 +119,20 @@ public class Accueil_Controller {
 			e1.printStackTrace();
 		}
 	     
+	}
+	
+	@FXML
+	private void ouvrir_score(ActionEvent e) {
+		try {
+			Desktop.getDesktop().browse(new URL("https://www.amazon.fr/Apple-Ordinateur-bureau-quadricoeur-graphique/dp/B004ZBDJ6M?tag=coa_fr-21").toURI()); //Il faudra changer l'URL pour le site de notre projet.
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (URISyntaxException e1) {
+			e1.printStackTrace();
+		}
+		
 	}
 	
 	public static void scene_fenètre_normale() {
