@@ -1,9 +1,14 @@
 package application.controle;
 
-import application.SGBD.DAO;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import application.SGBD.BDD_utilisation;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class Inscription_Controller {
 	
@@ -32,11 +37,31 @@ public class Inscription_Controller {
 	}
 	
 	@FXML
-	private void inscription() {
-		String sql = "INSERT INTO joueur(id_joueur,nom_utilisateur, nom_joueur, mail_joueur, code_confirmation, date_confirmation, mdp_joueur, temps_jeu) " + 
-                "VALUES('null', 'username', 'pseudo', 'mail', 'NOW(), 'mdp1', '')";
-		DAO.insérer_data(sql);
-		
+	private void inscription() { //L'inscription fonctionne
+		String requeteSQL="INSERT INTO joueur(nom_utilisateur,nom_joueur,mail_joueur,code_confirmation,date_confirmation,mdp_joueur,temps_jeu) "
+				+ "VALUES(?,?,?,'123',CURDATE(),?,TIMESTAMP(\"2018-09-15\"))";
+		try {
+			BDD_utilisation.load_database();
+			PreparedStatement preparedStatement=BDD_utilisation.getConn().prepareStatement(requeteSQL);
+			preparedStatement.setString(1, username.getText());
+			preparedStatement.setString(2, pseudo.getText());
+			preparedStatement.setString(3, mail.getText());
+			preparedStatement.setString(4, mdp1.getText());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Alert alert=new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information");
+		alert.setHeaderText("");
+		alert.setContentText("Votre inscription a bien été prise en compte !");
+		alert.showAndWait();
+		this.username.setText("");
+		this.pseudo.setText("");
+		this.mail.setText("");
+		this.mdp1.setText("");
+		this.mdp2.setText("");
 	}
 	
 	public TextField getUsername() {

@@ -5,29 +5,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BDD_utilisation {
+	private static Connection conn;
 	
-	public Connection get_connection() throws SQLException {
-		Connection conn =null;
-//		try {
-//			Class.forName("com.mysql.cj.jdbc.Driver");
-//		} catch (ClassNotFoundException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//		try {
-//			
-//			
-//			 String url ="jdbc:mysql://localhost:3306/pjs4?serverTimezone=UTC";
-//		     String user ="root";
-//		     String passwd ="";
-//		         
-//		     conn = DriverManager.getConnection(url, user, passwd);
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return conn;
+	public static Connection getConn() {
+		return conn;
+	}
+
+	public static void load_database() throws SQLException {
 		
 		try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
@@ -36,11 +20,10 @@ public class BDD_utilisation {
 	    }
 
 	    try {
-	        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/pjs4?serverTimezone=UTC", "root", "");
+	        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/pjs4?serverTimezone=UTC","root","");
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
-	    return conn;
 	}
 	
 	

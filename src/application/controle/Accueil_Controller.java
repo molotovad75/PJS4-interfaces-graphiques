@@ -1,13 +1,13 @@
 package application.controle;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import application.Appli;
 import application.SGBD.BDD_utilisation;
+import application.modele.Joueur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -60,24 +60,39 @@ public class Accueil_Controller {
 //	}
 	
 	@FXML 
-	private void verif_co_bdd() throws SQLException {
-		String SQL="SELECT j.nom_utilisateur,j.mdp_joueur FROM joueur AS j WHERE j.nom_joueur=? AND j.mdp_joueur=?";
-		
-//		try {
-//			stat=con.prepareStatement(SQL);
-//			stat.setString(1, pseudo.getText().toString());
-//			stat.setString(2, Mot_de_passe.getText().toString());
-//			rs=stat.executeQuery();
-//			if (rs.next()) {
-//				labelEtat.setText("Connecté");
-//			}else
-//			{
-//				labelEtat.setText("Non connecté");
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.getMessage();
-//		}
+	private Joueur verif_co_bdd() throws SQLException {
+		Statement statement = null;
+        ResultSet resultat = null;
+        Joueur joueur=null;
+		String requeteSQL="SELECT j.nom_joueur,j.mdp_joueur FROM joueur AS j WHERE j.nom_joueur="+pseudo.getText()+" AND j.mdp_joueur="+Mot_de_passe.getText()+";";
+		try {
+			BDD_utilisation.load_database();
+			statement=BDD_utilisation.getConn().createStatement();
+			resultat=statement.executeQuery(requeteSQL);
+			while (resultat.next()) {
+				String nom_joueur=resultat.getString("j.nom_joueur");
+				String mdp_joueur=resultat.getString("j.mdp_joueur");
+				joueur=new Joueur();
+				joueur.setNom_joueur(nom_joueur);
+				joueur.setMdp_joueur(mdp_joueur);
+				labelEtat.setText(joueur.toString());
+			}
+		} catch (SQLException e) {
+			e.getMessage();
+		}finally {
+			// Fermeture de la connexion
+            try {
+                if (resultat != null)
+                    resultat.close();
+                if (statement != null)
+                    statement.close();
+                if (BDD_utilisation.getConn() != null)
+                	BDD_utilisation.getConn().close();
+            } catch (SQLException ignore) {
+            	ignore.getMessage();
+            }
+		}
+		return joueur;
 	}
 	
 	
