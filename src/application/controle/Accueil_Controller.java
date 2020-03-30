@@ -1,10 +1,12 @@
 package application.controle;
-
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import application.Appli;
 import application.SGBD.BDD_utilisation;
 import application.modele.Joueur;
@@ -17,6 +19,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 public class Accueil_Controller {
@@ -129,13 +133,16 @@ public class Accueil_Controller {
 	}
 	@FXML //fx:id Mdp_oublié
 	private void ouvrir_form_mdp_oubli(ActionEvent e) throws IOException {
-		stage.setTitle("Mot de passe oublié - Miesto");
-		FXMLLoader  loader=new FXMLLoader();
-		loader.setLocation(Appli.class.getResource("view/formulaire_mdp_oublié.fxml"));
-		mainLayout=loader.load();
-		scene_fenètre_normale();
-		primaryStage.close();
-		stage_mdp_oublié=stage;
+		 try {
+			Desktop.getDesktop().browse(new URL("https://osu.ppy.sh/home").toURI());
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (URISyntaxException e1) {
+			e1.printStackTrace();
+		}
+	     
 	}
 	
 	public static void scene_fenètre_normale() {
