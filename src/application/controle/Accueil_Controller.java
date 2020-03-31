@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import application.Appli;
 import application.SGBD.BDD_utilisation;
 import application.modele.Joueur;
@@ -14,11 +16,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Accueil_Controller {
@@ -30,7 +38,10 @@ public class Accueil_Controller {
 	private Hyperlink Mdp_oublié,lien_inscription;
 	@FXML
 	private Label labelEtat;
-	
+	@FXML
+	private Text titre;
+	@FXML
+	private  Button btn_quitter;
 	
 	public static Pane mainLayout;
 	public static Stage primaryStage=new Stage(),stage_menu_jeu,stage_inscription,stage_mdp_oublié;
@@ -40,39 +51,32 @@ public class Accueil_Controller {
 
 	
 	@FXML 
-	private Joueur verif_co_bdd() throws SQLException {
-		Statement statement = null;
-        ResultSet resultat = null;
-        Joueur joueur=null;
-		String requeteSQL="SELECT j.nom_joueur,j.mdp_joueur FROM joueur AS j WHERE j.nom_joueur="+pseudo.getText()+" AND j.mdp_joueur="+Mot_de_passe.getText()+";";
-		try {
-			BDD_utilisation.load_database();
-			statement=BDD_utilisation.getConn().createStatement();
-			resultat=statement.executeQuery(requeteSQL);
+	private void verif_co_bdd() throws SQLException { //Méthode qui fonctionne
+		BDD_utilisation.load_database();
+		String requeteSQL="SELECT j.nom_joueur,j.mdp_joueur FROM joueur AS j WHERE (j.nom_joueur=? AND j.mdp_joueur=?)";
+		PreparedStatement pstmt = BDD_utilisation.getConn().prepareStatement(requeteSQL);
+		pstmt.setString(1, this.pseudo.getText());
+		pstmt.setString(2, this.Mot_de_passe.getText());
+		ResultSet resultat = pstmt.executeQuery();
+		if (!resultat.next()) {
+			Alert alert=new Alert(AlertType.ERROR);
+			alert.setTitle("Erreur de connexion");
+			alert.setContentText("Veuillez recommencez !");
+			alert.showAndWait();
+		}else {
 			while (resultat.next()) {
-				String nom_joueur=resultat.getString("j.nom_joueur");
-				String mdp_joueur=resultat.getString("j.mdp_joueur");
-				joueur=new Joueur();
-				joueur.setNom_joueur(nom_joueur);
-				joueur.setMdp_joueur(mdp_joueur);
-				labelEtat.setText(joueur.toString());
+				String nom_joueur=resultat.getString(1);
+				String mdp_joueur=resultat.getString(2);
+				this.labelEtat.setText("Connecté");
+				this.titre.setText("Bienvenue sur Miesto "+nom_joueur);
 			}
-		} catch (SQLException e) {
-			e.getMessage();
-		}finally {
-			// Fermeture de la connexion
-            try {
-                if (resultat != null)
-                    resultat.close();
-                if (statement != null)
-                    statement.close();
-                if (BDD_utilisation.getConn() != null)
-                	BDD_utilisation.getConn().close();
-            } catch (SQLException ignore) {
-            	ignore.getMessage();
-            }
+			Alert alert=new Alert(AlertType.CONFIRMATION, "Vous êtes connecté(e), voulez-vous allez dans le menu du jeu ?",ButtonType.YES, ButtonType.NO);
+			alert.setHeaderText("Connecté(e)");
+			alert.showAndWait();
+			
 		}
-		return joueur;
+		
+		
 	}
 	
 	
@@ -133,6 +137,25 @@ public class Accueil_Controller {
 			e1.printStackTrace();
 		}
 		
+	}
+	
+	
+	@FXML
+	private void quittez(ActionEvent e) {
+		Alert alert=new Alert(AlertType.CONFIRMATION,"Êtes-vous sûr de vouloir quittez l'application ?",ButtonType.YES,ButtonType.NO,ButtonType.CANCEL);
+		alert.showAndWait();
+		if (alert.getResult()==ButtonType.YES) {
+			primaryStage.close();
+		}else {
+			primaryStage.show();
+		}
+		
+	}
+	
+	public void mettre_image_btn_quitter() {
+		  Image playI=new Image(Accueil_Controller.class.getResourceAsStream("../../images/che_guevarra.png"));
+		
+		  btn_quitter.setGraphic(new ImageView(playI));
 	}
 	
 	public static void scene_fenètre_normale() {

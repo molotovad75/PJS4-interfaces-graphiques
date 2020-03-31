@@ -43,6 +43,7 @@ public class Inscription_Controller {
 	public static boolean isValiEmail(String email){
 	    return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
 	}
+	
 	@FXML
 	private void retour_acceuil() throws Exception {
 		Accueil_Controller.stage_inscription.close();
@@ -52,7 +53,7 @@ public class Inscription_Controller {
 	@FXML
 	private void inscription() { //L'inscription fonctionne
 		String requeteSQL="INSERT INTO joueur(nom_utilisateur,nom_joueur,mail_joueur,code_confirmation,date_confirmation,mdp_joueur,temps_jeu) "
-				+ "VALUES(?,?,?,'123',CURDATE(),?,TIMESTAMP(\"2018-09-15\"))";
+				+ "VALUES(?,?,?,'123',CURDATE(),?,TIMESTAMP(CURDATE())";
 		
 		try {
 			BDD_utilisation.load_database();
@@ -74,7 +75,7 @@ public class Inscription_Controller {
 				this.mdp1.setText("");
 				this.mdp2.setText("");
 			}else if(mdp1.getText().equals(mdp2.getText())==false) {
-				Alert alert=new Alert(AlertType.INFORMATION);
+				Alert alert=new Alert(AlertType.ERROR);
 				alert.setTitle("Information");
 				alert.setHeaderText("");
 				alert.setContentText("Les 2 mots de passe ne coincident pas");
@@ -83,7 +84,7 @@ public class Inscription_Controller {
 				this.mdp2.setText("");
 				
 			}else if (isValiEmail(this.mail.getText())==false) {
-				Alert alert=new Alert(AlertType.INFORMATION);
+				Alert alert=new Alert(AlertType.ERROR);
 				alert.setTitle("Information");
 				alert.setHeaderText("");
 				alert.setContentText("L'adresse électronique est invalide");
@@ -92,7 +93,6 @@ public class Inscription_Controller {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

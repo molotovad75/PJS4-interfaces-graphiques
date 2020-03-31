@@ -9,12 +9,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane id="index_css" fx:id="panner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="593.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controle.Accueil_Controller">
+<Pane id="index_css" fx:id="panner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="622.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controle.Accueil_Controller">
    <children>
       <TextField fx:id="pseudo" layoutX="203.0" layoutY="93.0" promptText="Pseudo" />
-      <Button id="se_connecter_btn" fx:id="se_connecter" layoutX="473.0" layoutY="360.0" mnemonicParsing="false" onAction="#verif_co_bdd" stylesheets="@style.css" text="Se connecter" />
+      <Button id="se_connecter_btn" fx:id="se_connecter" layoutX="489.0" layoutY="360.0" mnemonicParsing="false" onAction="#verif_co_bdd" stylesheets="@style.css" text="Se connecter" />
       <Button id="jouer_sans_co_btn" fx:id="jouer_sans_co" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#ouvir_menu_jeu" stylesheets="@style.css" text="Jouer sans se connecter" />
-      <Text fill="WHITE" layoutX="130.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue sur Miesto">
+      <Text fx:id="titre" fill="WHITE" layoutX="130.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue sur Miesto">
          <font>
             <Font size="35.0" />
          </font>
@@ -31,7 +31,7 @@
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Label fx:id="labelEtat" layoutX="270.0" layoutY="318.0" text="Etat:" textFill="WHITE">
+      <Label fx:id="labelEtat" layoutX="242.0" layoutY="312.0" prefHeight="27.0" prefWidth="124.0" text="Non connecté" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Label>
@@ -41,6 +41,7 @@
          </font>
       </Hyperlink>
       <PasswordField fx:id="Mot_de_passe" layoutX="203.0" layoutY="143.0" promptText="Mot de passe" />
-      <Button fx:id="btn_socre" layoutX="272.0" layoutY="360.0" mnemonicParsing="false" onAction="#ouvrir_score" text="Scores" />
+      <Button fx:id="btn_socre" layoutX="285.0" layoutY="360.0" mnemonicParsing="false" onAction="#ouvrir_score" prefHeight="31.0" prefWidth="81.0" text="Scores" />
+      <Button id="btn_quitter" fx:id="btn_quitter" layoutX="542.0" layoutY="14.0" mnemonicParsing="false" onAction="#quittez" stylesheets="@style.css" text="Quitter" />
    </children>
 </Pane>

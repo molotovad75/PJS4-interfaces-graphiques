@@ -1,12 +1,9 @@
 package application;
-
-
 import javafx.application.Application;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Appli extends Application {
 
@@ -17,7 +14,6 @@ public class Appli extends Application {
 	//Méthode pour démarrer l'application
 		@Override
 		public void start(Stage primaryStage) throws Exception {
-			
 			primaryStage.setTitle("Connexion - Miesto");
 			FXMLLoader  loader=new FXMLLoader();
 			loader.setLocation(Appli.class.getResource("view/index.fxml"));
@@ -28,7 +24,9 @@ public class Appli extends Application {
 			primaryStage.setMaxWidth(scene.getWidth());
 			primaryStage.setMinHeight(scene.getHeight());
 			primaryStage.setMinWidth(scene.getWidth());
+			//application.controle.Accueil_Controller.mettre_image_btn_quitter();
+			primaryStage.initStyle(StageStyle.UNDECORATED);
 			application.controle.Accueil_Controller.primaryStage=primaryStage;
-			primaryStage.show(); //On affcihe la fenètre.
+			primaryStage.show(); //On affiche la fenètre.
 		}
 }
