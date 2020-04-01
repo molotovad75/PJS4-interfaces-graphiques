@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -12,36 +12,36 @@
 <Pane id="index_css" fx:id="panner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="622.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controle.Accueil_Controller">
    <children>
       <TextField fx:id="pseudo" layoutX="203.0" layoutY="93.0" promptText="Pseudo" />
-      <Button id="se_connecter_btn" fx:id="se_connecter" layoutX="489.0" layoutY="360.0" mnemonicParsing="false" onAction="#verif_co_bdd" stylesheets="@style.css" text="Se connecter" />
-      <Button id="jouer_sans_co_btn" fx:id="jouer_sans_co" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#ouvir_menu_jeu" stylesheets="@style.css" text="Jouer sans se connecter" />
-      <Text fx:id="titre" fill="WHITE" layoutX="130.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue sur Miesto">
+      <Text fx:id="titre" fill="WHITE" layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue sur Miesto" wrappingWidth="475.064453125">
          <font>
             <Font size="35.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="113.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si vous n'avez pas de compte cliquez ">
+      <Text fill="WHITE" layoutX="191.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si vous n'avez pas de compte cliquez ">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Hyperlink id="ici_oubli_mdp" fx:id="Mdp_oublié" layoutX="412.0" layoutY="239.0" onAction="#ouvrir_form_mdp_oubli" stylesheets="@style.css" text="ici">
+      <Hyperlink id="ici_oubli_mdp" fx:id="Mdp_oublié" layoutX="497.0" layoutY="240.0" onAction="#ouvrir_form_mdp_oubli" stylesheets="@style.css" text="ici">
          <font>
             <Font size="18.0" />
          </font></Hyperlink>
-      <Text fill="WHITE" layoutX="39.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si vous avez oublié votre mot de passe cliquez">
+      <Text fill="WHITE" layoutX="124.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si vous avez oublié votre mot de passe cliquez">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Label fx:id="labelEtat" layoutX="242.0" layoutY="312.0" prefHeight="27.0" prefWidth="124.0" text="Non connecté" textFill="WHITE">
+      <Label fx:id="labelEtat" layoutX="264.0" layoutY="284.0" prefHeight="27.0" prefWidth="124.0" text="Non connecté" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Hyperlink id="hypertexte_pas_compte" fx:id="lien_inscription" layoutX="412.0" layoutY="205.0" onAction="#ouvrir_inscription" stylesheets="@style.css" text="ici">
+      <Hyperlink id="hypertexte_pas_compte" fx:id="lien_inscription" layoutX="490.0" layoutY="203.0" onAction="#ouvrir_inscription" stylesheets="@style.css" text="ici">
          <font>
             <Font size="18.0" />
          </font>
       </Hyperlink>
       <PasswordField fx:id="Mot_de_passe" layoutX="203.0" layoutY="143.0" promptText="Mot de passe" />
-      <Button fx:id="btn_socre" layoutX="285.0" layoutY="360.0" mnemonicParsing="false" onAction="#ouvrir_score" prefHeight="31.0" prefWidth="81.0" text="Scores" />
-      <Button id="btn_quitter" fx:id="btn_quitter" layoutX="542.0" layoutY="14.0" mnemonicParsing="false" onAction="#quittez" stylesheets="@style.css" text="Quitter" />
+      <JFXButton id="btn_quitter" fx:id="btn_quitter" layoutX="489.0" layoutY="14.0" onAction="#quittez" prefHeight="93.0" prefWidth="124.0" stylesheets="@style.css" text="" />
+      <JFXButton id="se_connecter_btn" fx:id="se_connecter" layoutX="512.0" layoutY="360.0" onAction="#verif_co_bdd" stylesheets="@style.css" text="Se connecter" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton id="jouer_sans_co_btn" fx:id="jouer_sans_co" layoutX="14.0" layoutY="360.0" onAction="#ouvir_menu_jeu" stylesheets="@style.css" text="Jouer sans se connecter" textFill="WHITE" />
+      <JFXButton id="btn_scores" fx:id="btn_socre" layoutX="294.0" layoutY="360.0" onAction="#ouvrir_score" stylesheets="@style.css" text="Scores" textFill="WHITE" />
    </children>
 </Pane>

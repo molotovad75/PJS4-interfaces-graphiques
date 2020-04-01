@@ -53,7 +53,7 @@ public class Inscription_Controller {
 	@FXML
 	private void inscription() { //L'inscription fonctionne
 		String requeteSQL="INSERT INTO joueur(nom_utilisateur,nom_joueur,mail_joueur,code_confirmation,date_confirmation,mdp_joueur,temps_jeu) "
-				+ "VALUES(?,?,?,'123',CURDATE(),?,TIMESTAMP(CURDATE())";
+				+ "VALUES(?,?,?,'123',CURDATE(),?,TIMESTAMP(NOW()))";
 		
 		try {
 			BDD_utilisation.load_database();
@@ -98,24 +98,24 @@ public class Inscription_Controller {
 		
 	}
 	
-	public TextField getUsername() {
-		return username;
+	public String getUsername() {
+		return username.getText();
 	}
 
-	public TextField getPseudo() {
-		return pseudo;
+	public String getPseudo() {
+		return pseudo.getText();
 	}
 
-	public TextField getMail() {
-		return mail;
+	public String getMail() {
+		return mail.getText();
 	}
 
-	public TextField getMdp1() {
-		return mdp1;
+	public String getMdp1() {
+		return mdp1.getText();
 	}
 
-	public TextField getMdp2() {
-		return mdp2;
+	public String getMdp2() {
+		return mdp2.getText();
 	}
 
 }

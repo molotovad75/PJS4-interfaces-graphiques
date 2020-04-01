@@ -24,7 +24,6 @@ public class Appli extends Application {
 			primaryStage.setMaxWidth(scene.getWidth());
 			primaryStage.setMinHeight(scene.getHeight());
 			primaryStage.setMinWidth(scene.getWidth());
-			//application.controle.Accueil_Controller.mettre_image_btn_quitter();
 			primaryStage.initStyle(StageStyle.UNDECORATED);
 			application.controle.Accueil_Controller.primaryStage=primaryStage;
 			primaryStage.show(); //On affiche la fenètre.

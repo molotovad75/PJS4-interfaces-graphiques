@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane id="menu_jeu_PJS4_CSS" fx:id="stage_menu_jeu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controle.Menu_jeu_Controller">
    <children>
-      <Button layoutX="83.0" layoutY="145.0" mnemonicParsing="false" text="Facile" />
-      <Text fill="WHITE" layoutX="83.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez un mode de jeu">
+      <Text fill="WHITE" layoutX="83.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez un personnage">
          <font>
             <Font size="37.0" />
          </font>
       </Text>
-      <Button layoutX="201.0" layoutY="145.0" mnemonicParsing="false" text="Moyen" />
-      <Button layoutX="313.0" layoutY="145.0" mnemonicParsing="false" text="Difficile" />
-      <Button layoutX="419.0" layoutY="145.0" mnemonicParsing="false" text="Hardcore" />
-      <Button id="btn_retour" fx:id="retour_index" layoutX="517.0" layoutY="355.0" mnemonicParsing="false" onAction="#retour_acceuil" stylesheets="@style.css" text="Retour" />
+      <JFXButton id="btn_retour" fx:id="retour_index" layoutX="500.0" layoutY="344.0" onAction="#retour_acceuil" stylesheets="@style.css" text="Retour" textFill="WHITE" />
    </children>
 </Pane>

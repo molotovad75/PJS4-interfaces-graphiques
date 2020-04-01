@@ -5,8 +5,7 @@
 }
 
 
-
-#se_connecter_btn:hover, #jouer_sans_co_btn:hover,#btn_retour:hover{
+#se_connecter_btn:hover, #jouer_sans_co_btn:hover,#btn_retour:hover,#btn_scores:hover,#btn_valider:hover{
 	-fx-background-color: rgba(43,255,181,50);
 	-fx-text-fill: blue;
 }
@@ -15,10 +14,23 @@
 	-fx-font-family: Colombia;
 }
 
-#hypertexte_pas_compte,#ici_oubli_mdp{
+#hypertexte_pas_compte,#ici_oubli_mdp,#mode_jeu_label{
 	-fx-text-fill: white;
+}
+#mode_jeu_label{
+	-fx-background-size: 24px;
 }
 
 #hypertexte_pas_compte:hover,#ici_oubli_mdp:hover{
 	-fx-text-fill: #80ff6d;
+}
+
+#btn_quitter{
+	-fx-background-image: url("../../images/croix_rouge.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: stretch ;
+}
+
+#btn_quitter:hover{
+	-fx-background-color: rgba(43,255,181,50);
 }
