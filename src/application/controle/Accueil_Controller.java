@@ -82,7 +82,9 @@ public class Accueil_Controller {
 					ouvir_menu_jeu();
 					
 			}else {
+				this.se_connecter.setDisable(true);
 				primaryStage.show();
+				
 			}
 		}
 		
