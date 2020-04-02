@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import application.Appli;
 import application.SGBD.BDD_utilisation;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -51,8 +53,8 @@ public class Accueil_Controller {
 	}
 	
 	@FXML 
-	private void verif_co_bdd() throws SQLException { //Méthode qui fonctionne
-		String nom_joueur=null,mdp_joueur=null;
+	private void verif_co_bdd() throws SQLException, IOException { //Méthode qui fonctionne
+		String nom_joueur,mdp_joueur;
 		BDD_utilisation.load_database();
 		String requeteSQL="SELECT j.nom_joueur,j.mdp_joueur FROM joueur AS j WHERE (j.nom_joueur=? AND j.mdp_joueur=?)";
 		PreparedStatement pstmt = BDD_utilisation.getConn().prepareStatement(requeteSQL);
@@ -65,25 +67,20 @@ public class Accueil_Controller {
 			alert.setContentText("Veuillez recommencez !");
 			alert.showAndWait();
 		}else {
-			while (resultat.next()) {
-				nom_joueur=resultat.getString(1);
-				mdp_joueur=resultat.getString(2);
-				this.nom_joueur=nom_joueur;
-				this.titre.setText("Bienvenue sur Miesto "+nom_joueur);
-			}
+			nom_joueur=resultat.getString(1);
+			mdp_joueur=resultat.getString(2);
+			this.nom_joueur=nom_joueur;
+			this.titre.setText("Bienvenue sur Miesto "+this.getnom_joueur());
 			Alert alert=new Alert(AlertType.CONFIRMATION, "Vous êtes connecté(e), voulez-vous allez dans le menu du jeu ?",ButtonType.YES, ButtonType.NO);
 			this.labelEtat.setText("Connecté(e)");
 			alert.setHeaderText("Connecté(e)");
+		
 			alert.showAndWait();
-			
+			stage.initStyle(StageStyle.UNDECORATED);
 			if (alert.getResult()==ButtonType.YES) {
-				try {
-					ouvir_menu_jeu(null);
+			
+					ouvir_menu_jeu();
 					
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 			}else {
 				primaryStage.show();
 			}
@@ -96,9 +93,10 @@ public class Accueil_Controller {
 	/*Méthode qui servira pour le bouton 
 	 * qui a pour fx:id se_connecter
 	 * sous réserve d'avoir vérifier dans la base de données que
-	 * le login et le mot de passe sont corrects.
+	 * le login et le mot de passe sont corrects.    stage.initStyle(StageStyle.UNDECORATED);
 	 * */
-	private void ouvir_menu_jeu(ActionEvent e) throws IOException {
+	private void ouvir_menu_jeu() throws IOException {
+		
 		stage.setTitle("Menu - Miesto");
 		FXMLLoader  loader=new FXMLLoader();
 		loader.setLocation(Appli.class.getResource("view/menu_jeu_PJS4.fxml"));
@@ -106,7 +104,6 @@ public class Accueil_Controller {
 		scene_fenètre_normale();
 		primaryStage.close();
 		stage_menu_jeu=stage;
-		
 	}
 	
 	@FXML //fx:id lien_inscription
@@ -168,7 +165,6 @@ public class Accueil_Controller {
 		stage.setMaxWidth(scene.getWidth());
 		stage.setMinHeight(scene.getHeight());
 		stage.setMinWidth(scene.getWidth());
-		stage.initStyle(StageStyle.UNDECORATED);
 		stage.show();
 	}
 	
