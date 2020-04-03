@@ -7,11 +7,13 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.jfoenix.controls.JFXButton;
+
 import application.Appli;
 import application.SGBD.BDD_utilisation;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,6 +24,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -42,11 +45,12 @@ public class Accueil_Controller {
 	private  Button btn_quitter;
 	
 	public static Pane mainLayout;
-	public static Stage primaryStage=new Stage(),stage_menu_jeu,stage_inscription,stage_mdp_oublié;
+	public static Stage primaryStage=new Stage(),stage_inscription;
 	private static Stage stage=new Stage();
 	
 	protected Scene scene;
 	private String nom_joueur;
+	private String mdp_joueur;
 	
 	public String getnom_joueur() {
 		return nom_joueur;
@@ -70,19 +74,37 @@ public class Accueil_Controller {
 			nom_joueur=resultat.getString(1);
 			mdp_joueur=resultat.getString(2);
 			this.nom_joueur=nom_joueur;
+			this.setMdp_joueur(mdp_joueur);
 			this.titre.setText("Bienvenue sur Miesto "+this.getnom_joueur());
 			Alert alert=new Alert(AlertType.CONFIRMATION, "Vous êtes connecté(e), voulez-vous allez dans le menu du jeu ?",ButtonType.YES, ButtonType.NO);
 			this.labelEtat.setText("Connecté(e)");
 			alert.setHeaderText("Connecté(e)");
-		
 			alert.showAndWait();
 			stage.initStyle(StageStyle.UNDECORATED);
 			if (alert.getResult()==ButtonType.YES) {
-			
-					ouvir_menu_jeu();
+				this.se_connecter.setDisable(true);
+				this.jouer_sans_co.setDisable(true);
+				ouvir_menu_jeu();
 					
 			}else {
 				this.se_connecter.setDisable(true);
+				this.jouer_sans_co.setDisable(true);
+				JFXButton btn_jouer=new JFXButton("Jouer");
+				btn_jouer.setLayoutX(14); btn_jouer.setLayoutY(360); btn_jouer.setPrefWidth(177); btn_jouer.setPrefHeight(31);
+				btn_jouer.setId("btn_jouer");
+				final URL cssURL = getClass().getResource("../view/style.css"); 
+				btn_jouer.getStylesheets().add(cssURL.toExternalForm());
+				btn_jouer.setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent event) {
+						try {
+							ouvir_menu_jeu();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				btn_jouer.setDisable(false);
 				primaryStage.show();
 				
 			}
@@ -99,13 +121,24 @@ public class Accueil_Controller {
 	 * */
 	private void ouvir_menu_jeu() throws IOException {
 		
-		stage.setTitle("Menu - Miesto");
-		FXMLLoader  loader=new FXMLLoader();
-		loader.setLocation(Appli.class.getResource("view/menu_jeu_PJS4.fxml"));
-		mainLayout=loader.load();
-		scene_fenètre_normale();
-		primaryStage.close();
-		stage_menu_jeu=stage;
+//		stage.setTitle("Menu - Miesto");
+//		FXMLLoader  loader=new FXMLLoader();
+//		loader.setLocation(Appli.class.getResource("view/menu_jeu_PJS4.fxml"));
+//		mainLayout=loader.load();
+//		scene_fenètre_normale();
+//		primaryStage.close();
+//		Menu_jeu_Controller.stage_menu_jeu=stage;
+		
+		
+		String cmd="src\\application\\JeuPJS4_Lebon\\JeuPJS4.exe";
+		try {
+			Runtime rt=Runtime.getRuntime();
+			Process y=rt.exec(cmd);
+			y.waitFor();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
 	}
 	
 	@FXML //fx:id lien_inscription
@@ -168,6 +201,14 @@ public class Accueil_Controller {
 		stage.setMinHeight(scene.getHeight());
 		stage.setMinWidth(scene.getWidth());
 		stage.show();
+	}
+
+	public String getMdp_joueur() {
+		return mdp_joueur;
+	}
+
+	public void setMdp_joueur(String mdp_joueur) {
+		this.mdp_joueur = mdp_joueur;
 	}
 	
 	

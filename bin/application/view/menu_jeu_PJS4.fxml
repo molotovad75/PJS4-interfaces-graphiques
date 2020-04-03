@@ -7,7 +7,7 @@
 
 <Pane id="menu_jeu_PJS4_CSS" fx:id="stage_menu_jeu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controle.Menu_jeu_Controller">
    <children>
-      <Text fill="WHITE" layoutX="83.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez un personnage">
+      <Text fill="WHITE" layoutX="141.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chargement du jeu" wrappingWidth="317.61474609375">
          <font>
             <Font size="37.0" />
          </font>

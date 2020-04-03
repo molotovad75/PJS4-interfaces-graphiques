@@ -5,7 +5,7 @@
 }
 
 
-#se_connecter_btn:hover, #jouer_sans_co_btn:hover,#btn_retour:hover,#btn_scores:hover,#btn_valider:hover{
+#se_connecter_btn:hover, #jouer_sans_co_btn:hover,#btn_retour:hover,#btn_scores:hover,#btn_valider:hover,#btn_jouer:hover{
 	-fx-background-color: rgba(43,255,181,50);
 	-fx-text-fill: blue;
 }

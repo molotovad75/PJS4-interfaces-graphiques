@@ -41,7 +41,7 @@
       <PasswordField fx:id="Mot_de_passe" layoutX="203.0" layoutY="143.0" promptText="Mot de passe" />
       <JFXButton id="btn_quitter" fx:id="btn_quitter" layoutX="489.0" layoutY="14.0" onAction="#quittez" prefHeight="93.0" prefWidth="124.0" stylesheets="@style.css" text="" />
       <JFXButton id="se_connecter_btn" fx:id="se_connecter" layoutX="512.0" layoutY="360.0" onAction="#verif_co_bdd" stylesheets="@style.css" text="Se connecter" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton id="jouer_sans_co_btn" fx:id="jouer_sans_co" layoutX="14.0" layoutY="360.0" onAction="#ouvir_menu_jeu" stylesheets="@style.css" text="Jouer sans se connecter" textFill="WHITE" />
+      <JFXButton id="jouer_sans_co_btn" fx:id="jouer_sans_co" layoutX="14.0" layoutY="360.0" onAction="#ouvir_menu_jeu" prefWidth="177.0" stylesheets="@style.css" text="Jouer sans se connecter" textFill="WHITE" />
       <JFXButton id="btn_scores" fx:id="btn_socre" layoutX="294.0" layoutY="360.0" onAction="#ouvrir_score" stylesheets="@style.css" text="Scores" textFill="WHITE" />
    </children>
 </Pane>
